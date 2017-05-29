@@ -1,0 +1,21 @@
+#include<cstring>
+#include <iostream>
+using namespace std;
+int main() {
+char str[20];
+cin.getline(str,20);
+cout<<"enter the charecter : ";
+char ch;
+cin>>ch;
+int co=0;
+for (int i = 0; str[i]; ++i)
+ if (str[i]==ch) {
+	co++;
+	str[i]=co;}
+
+cout<<str;
+return 0;
+}
+
+
+
