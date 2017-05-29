@@ -1,0 +1,50 @@
+#include <iostream>
+#include <string>
+using namespace std;
+int main() {
+string str;
+cout<<"enter the string: ";
+getline(cin,str);
+char ch;
+cout<<"enter the charecter to find :";
+cin>>ch;
+int n;
+cout<<"enter the no of appear to find location ";
+cin>>n;
+int k,co=0;
+for (k = 0; str[k]; ++k);
+
+
+
+for(int i = 0; i < k; ++i) {
+	if (str[i]==ch){
+		co++;
+				if(co==n){
+				cout<<"the charecter appear for the "<<n<<"time"<<"in the location : "<<i;
+				break;}
+
+	}
+
+}
+
+
+
+
+
+
+
+
+
+
+return 0;
+}
+
+/* enter the string: hello world pro
+enter the charecter to find :o
+enter the no of appear to find location 3
+the charecter appear for the 3timein the location : 14
+ */
+
+
+
+
