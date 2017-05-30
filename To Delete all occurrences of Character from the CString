@@ -1,0 +1,32 @@
+#include<cstring>
+#include <iostream>
+using namespace std;
+int main() {
+char str[200];
+cin.getline(str,200);
+char ch;
+cout<<"enter the charecter to delete : ";
+cin>>ch;
+
+int i, j = 0;
+int size;
+size = strlen(str);
+
+for (i = 0; i < size; i++) {
+   if (str[i] != ch) {
+      str[j] =str[i];
+      j++;
+   }
+}
+str[j] = '\0';
+
+cout<<str;
+
+
+
+
+return 0;
+}
+
+
+
