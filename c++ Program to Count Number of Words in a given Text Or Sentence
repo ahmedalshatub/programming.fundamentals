@@ -4,7 +4,7 @@ using namespace std;
 int main() {
 char str[200];
 cin.getline(str,200);
-int count = 0;
+int count = 1;
 
 
 
@@ -18,6 +18,6 @@ for (int i = 0;str[i] != '\0';i++)
         count++;
 
 }
-cout<<"the number of word in the string is : "<<count+1<<endl;
+cout<<"the number of word in the string is : "<<count<<endl;
 return 0;
 }
