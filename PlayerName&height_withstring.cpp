@@ -9,7 +9,7 @@ char ch;
 ah	:
 cout<<"enter the first letters of player name";
 	cin>>ch;
-	for ( i = 0; i < 4; ++i) {
+	for ( i = 0; i <n; ++i) {
 	if (PlayerName[i][0]==ch) {
 				for (j = i+1; j < n; ++j)
 					if (PlayerName[j][0]==ch)
