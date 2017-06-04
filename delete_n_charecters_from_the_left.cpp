@@ -7,12 +7,14 @@ int k,n;
 cout<<"enter the number of charecter to delete";
 cin>>n;
 for (k = 0; str[k]; ++k);
-int i,j=0;
-for (; str[n]; ++n) {
-	str[j]=str[n];
-	j++;
+int j=n,i=0;
+for (; str[j]; ++j,i++) {
+	str[i]=str[j];
 }
-str[j]='\0';
+str[i]='\0';
+cout<<" after delete :"<<n<<" of charecters : ";
+
 cout<<str;
+
 return 0;
 }
