@@ -1,0 +1,205 @@
+#include <iostream>
+using namespace std;
+
+struct node{
+	int info;
+	node *link;
+};
+node *first=NULL;
+//create function
+void create(node *&first){
+	int x;
+	node *h;
+	for(int i=0;i<5;i++){
+		h=new node;
+		cout<<"\n enter the value of "<<i<<" \n";
+		cin>>x;
+		h->info=x;
+h->link=first;
+first=h;
+	}
+}
+//end create function
+//display function
+void display(node *first){
+	node *k;
+	k=first;
+while(k!=NULL){
+	cout<<k->info<<" ";
+	k=k->link;
+}
+}
+//end display function
+//search function
+void search(node *first,int values){
+	node *k;
+	k=first;
+	int pos=1;
+	bool state=false;
+while(k!=NULL){
+	if(k->info==values){
+		state=true;
+		break;
+	}
+
+	k=k->link;
+	pos++;
+}
+if(state){
+	cout<<"the value: "<<values<<" found first time in the position :"<<pos<<endl;
+}
+else{cout<<"there is no node had value as :"<<values<<endl;}
+
+}
+//end search function
+
+//insert after function
+void InsertAfter(node *&first,int values){
+	node *k;
+
+	k=first;
+	bool state=false;
+while(k!=NULL){
+	if(k->info==values){
+		state=true;
+break;
+	}
+	k=k->link;
+}
+if(state){
+	node *h;
+	h=new node;
+	int x;
+	cout<<"\n enter the value  "<<endl;
+			cin>>x;
+	h->info=x;
+	h->link=k->link;
+	k->link=h;
+	cout<<"end insert"<<endl;
+}
+else{cout<<"there is no node had value as :"<<values<<endl;}
+}
+//end insert after function
+//insert before function
+void InsertBefore(node *&first,int values){
+	node *k;
+	k=first;
+	node *BeforeNode;
+	bool state=false;
+while(k!=NULL){
+
+	if(k->info==values){
+		state=true;
+break;
+	}
+	BeforeNode=k;
+		k=k->link;
+
+
+}
+if(state){
+	node *h;
+	h=new node;
+		int x;
+		cout<<"\n enter the value  "<<endl;
+				cin>>x;
+				h->info=x;
+	if(k==first){
+		h->link=k;
+		first=h;
+}else{
+	BeforeNode->link=h;
+	h->link=k;
+	}
+	cout<<"end insert"<<endl;
+}
+else{cout<<"there is no node had value as :"<<values<<endl;}
+}
+//end insert before function
+
+
+
+//delete the node of value function
+void deleteNode(node *&first,int values){
+	node *k;
+	node *BeforeNode;
+	k=first;
+	bool state=false;
+while(k!=NULL){
+	if(k->info==values){
+		state=true;
+break;
+	}
+	BeforeNode=k;
+	k=k->link;
+}
+if(state){if(k==first){
+first=k->link;
+}else{
+	BeforeNode->link=k->link;
+	cout<<"end deleted\n";
+}
+}
+else{cout<<"there is no node had value as :"<<values<<endl;}
+}
+//delete the node of value function
+int main() {
+int k,values;
+do{
+	cout<<"1-to create"<<endl;
+	cout<<"2-to display"<<endl;
+	cout<<"3-to search"<<endl;
+	cout<<"4-to insert after value"<<endl;
+	cout<<"5-to insert before value"<<endl;
+	cout<<"6-to delete the node of value"<<endl;
+	cout<<"7-to exit"<<endl;
+	cin>>k;
+switch(k){
+case 1:create(first);
+break;
+case 2:
+	if(first==NULL){cout<<"the linked list had no node";}
+	else{
+	display(first);}
+break;
+case 3:
+	if(first==NULL){cout<<"the linked list had no node";}
+	else{
+		cout<<"enter the value to find it position \n";
+		cin>>values;
+	search(first,values);
+	}
+break;
+case 4:
+	if(first==NULL){cout<<"the linked list had no node";}
+	else{
+		cout<<"enter the value to insert after it \n";
+		cin>>values;
+InsertAfter(first,values);
+	}
+break;
+case 5:
+	if(first==NULL){cout<<"the linked list had no node";}
+	else{
+		cout<<"enter the value to insert after it \n";
+		cin>>values;
+		InsertBefore(first,values);
+	}
+break;
+case 6:
+	if(first==NULL){cout<<"the linked list had no node";}
+	else{
+		cout<<"enter the value to insert after it \n";
+		cin>>values;
+		deleteNode(first,values);
+	}
+break;
+case 7:cout<<"the program has been ended"<<endl;
+break;
+default:cout<<"wrong value"<<endl;
+break;
+}
+cout<<"\n----------------------------------------\n";
+}while(k!=7);
+	return 0;
+}
