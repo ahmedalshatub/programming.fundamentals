@@ -6,8 +6,9 @@ struct node{
 	node *link;
 };
 node *first=NULL;
+node *m=NULL;
 //create function
-void create(node *&first){
+void create(node *&first,node *&m){
 	int x;
 	node *h;
 	for(int i=0;i<5;i++){
@@ -16,6 +17,8 @@ void create(node *&first){
 		cin>>x;
 		h->info=x;
 h->link=first;
+//set pointer m
+if(i==3){m=h;}
 first=h;
 	}
 }
@@ -120,7 +123,7 @@ else{cout<<"there is no node had value as :"<<values<<endl;}
 
 
 //delete the node of value function
-void deleteNode(node *&first,int values){
+void deleteNode(node *&first,int values,node *&m){
 	node *k;
 	node *BeforeNode;
 	k=first;
@@ -139,10 +142,43 @@ first=k->link;
 	BeforeNode->link=k->link;
 	cout<<"end deleted\n";
 }
+if(k==m){m=NULL;}
 }
 else{cout<<"there is no node had value as :"<<values<<endl;}
 }
 //delete the node of value function
+//insert after m pointer function
+void InsertAfterM(node *&m){
+	node *k;
+	k=new node;
+	int x;
+		cout<<"\n enter the value  "<<endl;
+				cin>>x;
+	k->info=x;
+	k->link=m->link;
+	m->link=k;
+
+}
+//end insert after m pointer function
+//insert after m pointer function
+void InsertBeforeM(node *&first,node *&m){
+	node *k=first;
+
+	while(k->link!=m){
+k=k->link;
+	}
+	node *h;
+		h=new node;
+		int x;
+			cout<<"\n enter the value  "<<endl;
+					cin>>x;
+					h->info=x;
+					k->link=h;
+					h->link=m;
+
+}
+//end insert after m pointer function
+
 int main() {
 int k,values;
 do{
@@ -152,10 +188,12 @@ do{
 	cout<<"4-to insert after value"<<endl;
 	cout<<"5-to insert before value"<<endl;
 	cout<<"6-to delete the node of value"<<endl;
-	cout<<"7-to exit"<<endl;
+	cout<<"7-to insert after m"<<endl;
+	cout<<"8-to insert before m"<<endl;
+	cout<<"9-to exit"<<endl;
 	cin>>k;
 switch(k){
-case 1:create(first);
+case 1:create(first,m);
 break;
 case 2:
 	if(first==NULL){cout<<"the linked list had no node";}
@@ -191,15 +229,29 @@ case 6:
 	else{
 		cout<<"enter the value to insert after it \n";
 		cin>>values;
-		deleteNode(first,values);
+		deleteNode(first,values,m);
 	}
 break;
-case 7:cout<<"the program has been ended"<<endl;
+case 7:
+	if(m==NULL){cout<<"the linked list had no node as m"<<endl;}
+		else{
+
+		InsertAfterM(m);
+	}
+break;
+case 8:
+	if(m==NULL){cout<<"the linked list had no node as m"<<endl;}
+		else{
+
+			InsertBeforeM(first,m);
+	}
+break;
+case 9:cout<<"the program has been ended"<<endl;
 break;
 default:cout<<"wrong value"<<endl;
 break;
 }
 cout<<"\n----------------------------------------\n";
-}while(k!=7);
+}while(k!=9);
 	return 0;
 }
